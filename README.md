@@ -20,15 +20,16 @@ To use the SDK, please install the following software:
 
 - [dfu-util 0.9](http://dfu-util.sourceforge.net/)
 
-### Sens'it Upgrade
+### Sens'it 2 Upgrade
 
+The Sens'it SDK was created with the the Sens'it 3 as its main target.  
 **If you use a Sens'it 2, follow the steps below to upgrade your device and make it compatible with the SDK.**
 
-1. Set your Sens'it on Standby mode (main LED off & secondary LED on).
-2. Connect it to your computer.
+1. Set your Sens'it 2 on Standby/Button mode: keep the button pressed until the main LED is off and the secondary LED is on.
+2. Connect Sens'it to your computer.
 3. Do 4 short presses on the button.
 4. When the secondary LED starts blinking, do a long press on the button.
-5. If both LEDs become white, your device is in bootloader; otherwise go back to step 3.
+5. If both LEDs become white, your device is in bootloader mode; otherwise go back to step 3.
 6. Run the following command to do a backup of your device memory in case of an upgrade failure:
 ```
 dfu-util -a 0 -s 0x08000000:32768 -U backup.bin
@@ -42,8 +43,8 @@ dfu-util -a 0 -s 0x08000000:leave -D bin/upgrade.bin
     - **GREEN**, the upgrade was successful.
     - **YELLOW**, the upgrade has failed.
     - **RED**, your device cannot be upgraded.
-9. To put back your device in bootloader redo step 3 to 5.
-10. If the upgrade was successful you can now program your device with your custom firmware, otherwise run the following command to restore your device to its initial state:
+9. To put your device back in bootloader mode, redo step 3 to 5.
+10. If the upgrade was successful you can now program your device with your custom firmware. If not, run the following command to restore your device to its initial state:
 ```
 dfu-util -a 0 -s 0x08000000:leave -D backup.bin
 ```
@@ -57,14 +58,14 @@ Many functions are available to help you develop your custom application:
  - [Ambient light sensor](sdk/inc/sensors/ltr329.h)
  - [Accelerometer](sdk/inc/sensors/fxos8700.h)
 
-The full API documentation is available [here](doc/html/modules.html).  
-You can also consult the [F.A.Q.](doc/FAQ.md) section, and the list of [reserved prefix](doc/reserved-prefix.md) that you should not use for your functions.
+The API documentation is available in the full SDK archive, in the /doc/html/modules.html file.  
+You can also consult the [F.A.Q.](doc/FAQ.md) section, and the list of [reserved prefixes](doc/reserved-prefix.md) that you should not use for your functions.
 
 To start your development, use the [main](sdk/src/main.c) template.
 
 ### Sample codes
 
-Here is the list of available sample code that may help you:
+Here is the list of available sample codes that may help you:
 
 | Use case                                    | Doc                        |
 |---------------------------------------------|----------------------------|
@@ -86,8 +87,7 @@ You can edit the following fields to match your need:
  - **CC_FLAGS**: to add some compilation flags.
 
 By default, the firmware will use the Radio Configuration (RC) set in your device.  
-If you need another RC, use one of these flags: `-DUSE_RC1`, `-DUSE_RC2`, `-DUSE_RC3`, or `-DUSE_RC4`.
-
+If you need another RC, use one of these flags: `-DUSE_RC1`, `-DUSE_RC2`, `-DUSE_RC3`, or `-DUSE_RC4`.  
 Then, use the command `make` to build your firmware.
 
 The size of a Sens'it firmware can be up to 29 kB.  
@@ -95,11 +95,11 @@ The size of a Sens'it firmware can be up to 29 kB.
 
 ## Program your Sens'it
 
-To program your Sens'it you will need to put it in bootloader:
+To program your Sens'it you will need to put it in bootloader mode:
 1. Connect your device to your computer.
-2. Reset your device. With one of the provided firmwares you can do this with 4 short presses on the button.
+2. Reset your device. With one of the provided firmwares, you can do this with 4 short presses on the button.
 3. When the secondary LED starts blinking, do a long press on the button.
-4. If both LEDs become white, your device is in bootloader.
+4. If both LEDs become white, your device is in bootloader mode.
 
 Then, use the `make prog` command to program your Sens'it.
 
@@ -107,7 +107,7 @@ If you want to return to the original firmware of the Sens'it 3, use the followi
 ```
 dfu-util -a 0 -s 0x08000000:leave -D bin/sensit_discovery_vX.X.X.bin
 ```
-Replace `X.X.X` with the current version of the Discovery firmware available in the `bin` folder.
+Replace `X.X.X` with the current version of the Discovery firmware available in the `bin` folder of the full SDK archive.
 
 ## Version
 

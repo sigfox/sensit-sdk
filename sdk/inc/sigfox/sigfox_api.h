@@ -281,9 +281,9 @@
 #define RC2_SM_CONFIG  { RC2_SET_STD_CONFIG_SM_WORD_0, RC2_SET_STD_CONFIG_SM_WORD_1, RC2_SET_STD_CONFIG_SM_WORD_2 }   /*!< Config for normal RC2 operations */
 #define RC4_SM_CONFIG  { RC4_SET_STD_CONFIG_SM_WORD_0, RC4_SET_STD_CONFIG_SM_WORD_1, RC4_SET_STD_CONFIG_SM_WORD_2 }   /*!< Config for normal RC4 operations */
 
-#define RC3A_CONFIG    {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1288=5000ms max time between each frame>*/
-#define RC3C_CONFIG    {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1288=5000ms max time between each frame>*/
-#define RC5_CONFIG     {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1288=5000ms max time between each frame>*/
+#define RC3A_CONFIG    {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1388=5000ms max time between each frame>*/
+#define RC3C_CONFIG    {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1388=5000ms max time between each frame>*/
+#define RC5_CONFIG     {0x00000003,0x00001388,0x00000000}  /*!< Config word default value: 3 retries before 1st frame , 0x1388=5000ms max time between each frame>*/
 
 
 #define ID_LENGTH      (sfx_u8)(4)            /* Size of device identifier */
